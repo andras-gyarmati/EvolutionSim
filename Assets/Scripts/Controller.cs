@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Controller : MonoBehaviour {
+namespace Assets.Scripts
+{
+    public class Controller : MonoBehaviour {
 
-	void Start () {
+        void Start () {
 		
-	}
+        }
 	
-	void Update () {
+        void Update () {
 		
-	}
+        }
+    }
 }

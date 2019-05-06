@@ -2,11 +2,11 @@
 
 namespace Assets.Scripts
 {
-    public class Knob
+    public class Muscle
     {
         private GameObject _gameObject;
 
-        public Knob(GameObject gameObject)
+        public Muscle(GameObject gameObject)
         {
             _gameObject = gameObject;
         }
