@@ -59,7 +59,8 @@ namespace Assets.Scripts
                 knobs.Add(new Knob(_gameObject));
             }
 
-            var pairCount = Random.Range(knobCount, (knobCount * (knobCount - 1)) / 2);
+            //var pairCount = Random.Range(knobCount, (knobCount * (knobCount - 1)) / 2);
+            var pairCount = (knobCount * (knobCount - 1)) / 2;
 
             for (var i = 0; i < pairCount; i++)
             {
@@ -125,6 +126,10 @@ namespace Assets.Scripts
             {
                 knob.Deactivate();
             }
+            foreach (Muscle muscle in muscles)
+            {
+                muscle.Deactivate();
+            }
         }
 
         public void Activate()
@@ -132,6 +137,10 @@ namespace Assets.Scripts
             foreach (Knob knob in knobs)
             {
                 knob.Activate();
+            }
+            foreach (Muscle muscle in muscles)
+            {
+                muscle.Activate();
             }
             startFitness = CenterXPos();
         }

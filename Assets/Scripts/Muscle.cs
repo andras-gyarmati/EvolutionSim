@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 namespace Assets.Scripts
 {
@@ -30,6 +31,7 @@ namespace Assets.Scripts
             distanceJoint = k1.GameObject.AddComponent<DistanceJoint2D>();
             distanceJoint.distance = distance;
             distanceJoint.connectedBody = k2.Rigidbody;
+            distanceJoint.autoConfigureDistance = false;
 
             _lineRenderer = _gameObject.AddComponent<LineRenderer>();
             var lineRendererMaterial = Resources.Load<Material>("Line");
@@ -39,6 +41,17 @@ namespace Assets.Scripts
             SetLinePos();
 
             timer = Random.Range(0, 1f);
+            Deactivate();
+        }
+
+        public void Deactivate()
+        {
+            _gameObject.SetActive(false);
+        }
+
+        public void Activate()
+        {
+            _gameObject.SetActive(true);
         }
 
         private void SetLinePos()
