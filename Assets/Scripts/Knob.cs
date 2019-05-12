@@ -18,6 +18,7 @@ namespace Assets.Scripts
         {
             GameObject = new GameObject("Knob");
             GameObject.transform.SetParent(parent.transform);
+            GameObject.transform.position = new Vector2(Random.Range(0, 1f), Random.Range(0, 1f));
             _pairs = new List<Knob>();
             Rigidbody = GameObject.AddComponent<Rigidbody2D>();
             Deactivate();

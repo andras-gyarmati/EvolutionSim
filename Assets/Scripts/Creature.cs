@@ -22,7 +22,6 @@ namespace Assets.Scripts
         float startPosition;
         float finishPosition;
         float mutationAmount;
-        float maxPhysicsValue;
         float minKnobRadius;
         float maxKnobRadius;
         //float displayOffset;
@@ -60,9 +59,9 @@ namespace Assets.Scripts
                 knobs.Add(new Knob(_gameObject));
             }
 
-            var randomFloat = Controller.RandomFloat(knobCount, (knobCount * (knobCount - 1)) / 2);
-            ;
-            for (var i = 0; i < randomFloat; i++)
+            var pairCount = Random.Range(knobCount, (knobCount * (knobCount - 1)) / 2);
+            
+            for (var i = 0; i < pairCount; i++)
             {
                 Knob k1 = null;
                 Knob k2 = null;
@@ -75,7 +74,7 @@ namespace Assets.Scripts
                         k2 = knob;
                     }
                 }
-                muscles.Add(new Muscle(k1, k2, Controller.RandomFloat(1), Controller.RandomFloat(1)));
+                muscles.Add(new Muscle(k1, k2, Random.Range(0, 1f), Random.Range(0, 1f)));
                 k1.AddPair(k2);
                 k2.AddPair(k1);
             }
@@ -97,7 +96,8 @@ namespace Assets.Scripts
                 {
                     relProbs[i] = helperFunction(knobs[i].PairCount) / sum;
                 }
-                var picker = Controller.RandomFloat(1);
+
+                var picker = Random.Range(0, 1f);
                 var index = 0;
                 while (picker > 0 && index < knobs.Count)
                 {
@@ -160,26 +160,26 @@ namespace Assets.Scripts
         {
             foreach (Knob knob in creature.knobs)
             {
-                if (Controller.RandomFloat(1) < Controller.MutationRate)
+                if (Random.Range(0, 1f) < Controller.MutationRate)
                 {
                     knob.Density = RandomMutationAmount(knob.Density);
                 }
-                if (Controller.RandomFloat(1) < Controller.MutationRate)
+                if (Random.Range(0, 1f) < Controller.MutationRate)
                 {
                     knob.Friction = RandomMutationAmount(knob.Friction);
                 }
-                if (Controller.RandomFloat(1) < Controller.MutationRate)
+                if (Random.Range(0, 1f) < Controller.MutationRate)
                 {
                     knob.Restitution = RandomMutationAmount(knob.Restitution);
                 }
             }
             foreach (Muscle muscle in creature.muscles)
             {
-                if (Controller.RandomFloat(1) < Controller.MutationRate)
+                if (Random.Range(0, 1f) < Controller.MutationRate)
                 {
                     muscle.frequencyHz = RandomMutationAmount(muscle.frequencyHz);
                 }
-                if (Controller.RandomFloat(1) < Controller.MutationRate)
+                if (Random.Range(0, 1f) < Controller.MutationRate)
                 {
                     muscle.dampingRatio = RandomMutationAmount(muscle.dampingRatio);
                 }

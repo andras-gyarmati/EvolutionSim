@@ -23,16 +23,6 @@ namespace Assets.Scripts
             _environment = new Environment(gameObject);
         }
 
-        public static float RandomFloat(int max)
-        {
-            return Random.Next(max * 100) / 100f;
-        }
-
-        public static float RandomFloat(int min, int max)
-        {
-            return Random.Next(min * 100, max * 100) / 100f;
-        }
-
         private void FixedUpdate()
         {
             _environment.Update();

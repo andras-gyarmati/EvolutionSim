@@ -27,7 +27,7 @@ namespace Assets.Scripts
             distanceJoint.distance = distance;
             distanceJoint.connectedBody = k2.Rigidbody;
 
-            timer = Controller.RandomFloat(1);
+            timer = Random.Range(0, 1f);
         }
 
         public void Update()

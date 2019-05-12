@@ -16,7 +16,7 @@ namespace Assets.Scripts
             _gameObject.transform.SetParent(parent.transform);
 
             _obstacles = new List<Obstacle>();
-            _obstacles.Add(new Obstacle(_gameObject, new Vector2(0, 0), new Vector2(100, 1)));
+            _obstacles.Add(new Obstacle(_gameObject, new Vector2(0, -4.5f), new Vector2(2000, 100)));
 
             _population = new Population(_gameObject);
             _populationIndex = 0;
