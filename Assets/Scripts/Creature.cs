@@ -60,7 +60,7 @@ namespace Assets.Scripts
             }
 
             var pairCount = Random.Range(knobCount, (knobCount * (knobCount - 1)) / 2);
-            
+
             for (var i = 0; i < pairCount; i++)
             {
                 Knob k1 = null;
@@ -74,7 +74,7 @@ namespace Assets.Scripts
                         k2 = knob;
                     }
                 }
-                muscles.Add(new Muscle(k1, k2, Random.Range(0, 1f), Random.Range(0, 1f)));
+                muscles.Add(new Muscle(_gameObject, k1, k2, Random.Range(0, 1f), Random.Range(0, 1f)));
                 k1.AddPair(k2);
                 k2.AddPair(k1);
             }
