@@ -16,8 +16,9 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            PopulationSize = 500;
+            PopulationSize = 5;
             MutationRate = 0.05f;
+            LifeLength = 5f;
             Random = new System.Random();
             _environment = new Environment(gameObject);
         }
@@ -37,12 +38,7 @@ namespace Assets.Scripts
             _environment.Update();
         }
 
-        private void Update()
-        {
-
-        }
-
-        public static float MapValue(float value, float min, float max, float targetMin, float targetMax) //todo test
+        public static float MapValue(float value, float min, float max, float targetMin, float targetMax)
         {
             return targetMin + (targetMax - targetMin) * ((value - min) / (max - min));
         }

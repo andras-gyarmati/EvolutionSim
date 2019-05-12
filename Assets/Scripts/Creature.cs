@@ -59,7 +59,10 @@ namespace Assets.Scripts
             {
                 knobs.Add(new Knob(_gameObject));
             }
-            for (var i = 0; i < Controller.RandomFloat(knobCount, (knobCount * (knobCount - 1)) / 2); i++)
+
+            var randomFloat = Controller.RandomFloat(knobCount, (knobCount * (knobCount - 1)) / 2);
+            ;
+            for (var i = 0; i < randomFloat; i++)
             {
                 Knob k1 = null;
                 Knob k2 = null;
@@ -140,6 +143,8 @@ namespace Assets.Scripts
             {
                 muscle.Update();
             }
+
+            Age += Time.fixedDeltaTime;
         }
 
 

@@ -32,8 +32,6 @@ namespace Assets.Scripts
 
         public void Update()
         {
-            var x = Controller.MapValue(50, 0, 100, 0, 1); //if its 0.5 it works
-
             distanceJoint.distance = Controller.MapValue(Mathf.Sin(timer), -1, 1, distance * moveScale, distance / moveScale);
             timer += 0.1f;
         }

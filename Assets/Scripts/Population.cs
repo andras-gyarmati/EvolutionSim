@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -20,7 +19,7 @@ namespace Assets.Scripts
 
             for (var i = 0; i < Controller.PopulationSize; i++)
             {
-                _creatures.Add(new Creature(_gameObject, Controller.PopulationSize));
+                _creatures.Add(new Creature(_gameObject, 3));
             }
             _currentCreature = _creatures[0];
             _currentCreature.Activate();
