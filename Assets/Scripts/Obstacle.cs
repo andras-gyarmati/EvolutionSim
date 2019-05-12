@@ -8,6 +8,7 @@ namespace Assets.Scripts
         private SpriteRenderer _spriteRenderer;
         private BoxCollider2D _boxCollider2D;
         private Rigidbody2D _rigidbody2D;
+        public PhysicsMaterial2D PhysicsMaterial2D;
 
         public Obstacle(GameObject parent, Vector2 pos, Vector2 size)
         {
@@ -26,6 +27,10 @@ namespace Assets.Scripts
 
             _rigidbody2D = _gameObject.AddComponent<Rigidbody2D>();
             _rigidbody2D.bodyType = RigidbodyType2D.Static;
+
+            PhysicsMaterial2D = new PhysicsMaterial2D("ObstaclePM");
+            PhysicsMaterial2D.bounciness = 0f;
+            PhysicsMaterial2D.friction = 1f;
         }
     }
 }

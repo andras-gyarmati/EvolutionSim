@@ -11,6 +11,8 @@ namespace Assets.Scripts
         public Vector2 Pos => GameObject.transform.position;
         public Rigidbody2D Rigidbody;
 
+        public PhysicsMaterial2D PhysicsMaterial2D;
+
         private SpriteRenderer _spriteRenderer;
         private CircleCollider2D _circleCollider2D;
 
@@ -20,7 +22,7 @@ namespace Assets.Scripts
 
         private float _radius;
 
-        public Knob(GameObject parent)
+        public Knob(GameObject parent, float bounciness, float friction)
         {
             GameObject = new GameObject("Knob");
             GameObject.transform.SetParent(parent.transform);
@@ -29,10 +31,14 @@ namespace Assets.Scripts
             Rigidbody = GameObject.AddComponent<Rigidbody2D>();
             Rigidbody.bodyType = RigidbodyType2D.Dynamic;
 
+            PhysicsMaterial2D = new PhysicsMaterial2D("KnobPM");
+            PhysicsMaterial2D.bounciness = bounciness;
+            PhysicsMaterial2D.friction = friction;
+
             _spriteRenderer = GameObject.AddComponent<SpriteRenderer>();
             _spriteRenderer.sprite = Resources.Load<Sprite>("1px");
             _spriteRenderer.drawMode = SpriteDrawMode.Sliced;
-            _radius = 0.5f;
+            _radius = 0.2f;
             _spriteRenderer.size = new Vector2(_radius, _radius);
             _spriteRenderer.color = Color.red;
 

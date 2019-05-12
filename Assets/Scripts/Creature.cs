@@ -56,7 +56,7 @@ namespace Assets.Scripts
             muscles = new List<Muscle>();
             for (var i = 0; i < knobCount; i++)
             {
-                knobs.Add(new Knob(_gameObject));
+                knobs.Add(new Knob(_gameObject, Random.Range(0, 1f), Random.Range(0, 1f)));
             }
 
             //var pairCount = Random.Range(knobCount, (knobCount * (knobCount - 1)) / 2);

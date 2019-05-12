@@ -11,14 +11,16 @@ namespace Assets.Scripts
         public static float MutationRate;
         public static float LifeLength;
         public static System.Random Random;
+        public static float TimeScale;
 
         private Environment _environment;
 
         private void Start()
         {
-            PopulationSize = 5;
+            PopulationSize = 50;
             MutationRate = 0.05f;
             LifeLength = 5f;
+            TimeScale = 3;
             Random = new System.Random();
             _environment = new Environment(gameObject);
         }
@@ -26,6 +28,7 @@ namespace Assets.Scripts
         private void FixedUpdate()
         {
             _environment.Update();
+            Time.timeScale = TimeScale;
         }
 
         public static float MapValue(float value, float min, float max, float targetMin, float targetMax)

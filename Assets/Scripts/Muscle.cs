@@ -62,9 +62,11 @@ namespace Assets.Scripts
 
         public void Update()
         {
-            distanceJoint.distance = Controller.MapValue(Mathf.Sin(timer), -1, 1, distance * moveScale, distance / moveScale);
+            distanceJoint.enabled = false;
+            distanceJoint.enabled = true;
+            distanceJoint.distance = Controller.MapValue(Mathf.Sin(timer / frequencyHz), -1, 1, distance * moveScale, distance / moveScale);
             SetLinePos();
-            timer += 0.1f;
+            timer += Time.fixedDeltaTime;
         }
 
     }
