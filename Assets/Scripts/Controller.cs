@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -14,6 +15,7 @@ namespace Assets.Scripts
         public static float TimeScale;
 
         private Environment _environment;
+        private TextMeshProUGUI _populationText;
 
         private void Start()
         {
@@ -23,11 +25,13 @@ namespace Assets.Scripts
             TimeScale = 3;
             Random = new System.Random();
             _environment = new Environment(gameObject);
+            _populationText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
         }
 
         private void FixedUpdate()
         {
             _environment.Update();
+            _populationText.text = $"population: {_environment.PopulationIndex}";
             Time.timeScale = TimeScale;
         }
 

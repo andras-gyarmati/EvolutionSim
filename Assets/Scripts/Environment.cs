@@ -8,7 +8,7 @@ namespace Assets.Scripts
         private GameObject _gameObject;
         private List<Obstacle> _obstacles;
         private Population _population;
-        private int _populationIndex;
+        public int PopulationIndex;
 
         public Environment(GameObject parent)
         {
@@ -19,7 +19,7 @@ namespace Assets.Scripts
             _obstacles.Add(new Obstacle(_gameObject, new Vector2(0, -4.5f), new Vector2(50, 1)));
 
             _population = new Population(_gameObject);
-            _populationIndex = 0;
+            PopulationIndex = 0;
         }
 
         public void Update()
@@ -28,7 +28,7 @@ namespace Assets.Scripts
             if (_population.AllSimulated())
             {
                 _population.Reproduce();
-                _populationIndex++;
+                PopulationIndex++;
             }
         }
 
