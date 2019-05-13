@@ -37,14 +37,14 @@ namespace Assets.Scripts
                 }
                 foreach (Creature c in _creatures)
                 {
-                    c.relProb = c.Fitness / sum;
+                    c.RelativeProbability = c.Fitness / sum;
                 }
 
                 var picker = Controller.Random.Next(100) / 100f;
                 var index = 0;
                 while (picker > 0 && index < _creatures.Count)
                 {
-                    picker -= _creatures[index].relProb;
+                    picker -= _creatures[index].RelativeProbability;
                     index++;
                 }
                 index--;
@@ -66,6 +66,7 @@ namespace Assets.Scripts
         {
             _currentCreature.Update();
             if (_currentCreature.Age < Controller.LifeLength) return;
+            _currentCreature.CalcFitness();
             _creatureIndex++;
             _currentCreature.Deactivate();
             if (_creatureIndex >= _creatures.Count) return;
@@ -75,12 +76,28 @@ namespace Assets.Scripts
 
         public void Reproduce()
         {
-            _creatures = PickByFitness();
+            _currentCreature.Deactivate();
+            var selected = SelectTopHalfByProbability();
+            var offsprings = Breed(selected);
+            _creatures = offsprings;
+            _creatureIndex = 0;
+            _currentCreature = _creatures[_creatureIndex];
+            _currentCreature.Activate();
+        }
+
+        private List<Creature> Breed(List<Creature> parents)
+        {
+            return parents;
+        }
+
+        private List<Creature> SelectTopHalfByProbability()
+        {
+            return _creatures;
         }
 
         public bool AllSimulated()
         {
-            return _creatureIndex == _creatures.Count - 1;
+            return _creatureIndex == _creatures.Count;
         }
     }
 }

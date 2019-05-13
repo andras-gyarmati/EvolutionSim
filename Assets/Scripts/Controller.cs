@@ -17,7 +17,7 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            PopulationSize = 50;
+            PopulationSize = 3;
             MutationRate = 0.05f;
             LifeLength = 5f;
             TimeScale = 3;

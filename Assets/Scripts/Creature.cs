@@ -12,13 +12,12 @@ namespace Assets.Scripts
 
         public float Fitness;
         public float Age;
+        public float RelativeProbability;
 
-        private float relativeProbability;
         private float startPos;
         private float endPos;
 
         float startFitness;
-        public float relProb;
         float startPosition;
         float finishPosition;
         float mutationAmount;
@@ -30,14 +29,11 @@ namespace Assets.Scripts
         {
             Fitness = 0;
             Age = 0;
-            relativeProbability = 0;
+            RelativeProbability = 0;
             knobs = new List<Knob>();
             muscles = new List<Muscle>();
             _gameObject = new GameObject("Creature");
             _gameObject.transform.SetParent(parent.transform);
-
-            relProb = 0;
-
 
             mutationAmount = 0.3f;
             minKnobRadius = 12;
@@ -56,7 +52,7 @@ namespace Assets.Scripts
             muscles = new List<Muscle>();
             for (var i = 0; i < knobCount; i++)
             {
-                knobs.Add(new Knob(_gameObject, Random.Range(0, 1f), Random.Range(0, 1f)));
+                knobs.Add(new Knob(_gameObject, Random.Range(0.1f, 0.3f), Random.Range(0, 1f), Random.Range(0, 1f)));
             }
 
             //var pairCount = Random.Range(knobCount, (knobCount * (knobCount - 1)) / 2);
@@ -134,6 +130,10 @@ namespace Assets.Scripts
 
         public void Activate()
         {
+            Fitness = 0;
+            Age = 0;
+            RelativeProbability = 0;
+
             foreach (Knob knob in knobs)
             {
                 knob.Activate();
@@ -200,9 +200,9 @@ namespace Assets.Scripts
             return currentAmount; //todo fix
         }
 
-        float CalcFitness()
+        public void CalcFitness()
         {
-            return CenterXPos() - startFitness;
+            Fitness = CenterXPos() - startFitness;
         }
 
         private float CenterXPos()
